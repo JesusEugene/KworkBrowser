@@ -14,10 +14,13 @@ DATA_DIR = os.path.join(BASE_DIR,"src","data")
 
 #HTTP_MAIN_PAGE - ссылка на страницу для парса
 HTTP_MAIN_PAGE = r"https://kwork.ru/projects"
+HTTP_USER =r"https://kwork.ru/user/"
 
 
 #DEBUG - вывод дебаг инфы
 DEBUG = False
+
+ESCAPE_OUT = True
 
 #DEBUG_PHRASES - список дефолтных фраз для удобного дебага
 DEBUG_PHRASES = {
@@ -39,4 +42,5 @@ SELECTS_PATH = {
 SAVE_NAMES ={
         "main_topics" : "main_topics.json",
         "sub_topics" : "sub_topics.json",
+        "user" : "user.data",
 }

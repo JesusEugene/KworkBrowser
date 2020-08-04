@@ -43,17 +43,13 @@ def parse_sub_topics():
     
 def parse_post(child):
     """
-    Parse one post
+    Parse one post and return {}
     """
     topic = [
         child('div.wants-card__header-title.first-letter.breakwords > a')[0].text.strip(),
         child('div.wants-card__header-title.first-letter.breakwords > a')[0].attrib["href"]
     ] #
 
-    descriptions =[
-        i.tail for i in child('div.breakwords.first-letter.js-want-block-toggle.js-want-block-toggle-summary').children() 
-            if i.tail != None 
-        ]#
 
     price =[child("div > span.fs12")[0].tail.replace(" ","")]#
     tml = child("div.wants-card__description-higher-price > span.nowrap")
@@ -74,16 +70,18 @@ def parse_post(child):
     stats = [
         child("div.mb10.want-payer-statistic.d-flex > div > div:nth-child(1) > div > a")[0].text.strip(),
         child("div.mb10.want-payer-statistic.d-flex > div > div.dib.v-align-t")[0].text.split(":")[1].replace("\t","").replace("\n","").strip(),
-        tmp[1]
+        tmp[1],
         
     ]#
     return {
         "topic" : topic,
-        "descriptions" : descriptions,
         "price" : price,
         "info" : info,
         "stats" : stats,
     }
+
+def parse_full_post(url):
+    pass
 
 
 def get_posts(page):

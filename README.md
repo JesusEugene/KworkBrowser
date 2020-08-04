@@ -1,13 +1,27 @@
-# Kwork Browser
+<h1 align ="center">KworkBrowser</h1>
+
+<img src="src/icons/Head.png">
+
+---------------------------------
+<img alt="GitHub" src="https://img.shields.io/github/license/GnomGad/KworkBrowser?style=plastic" >
+<img alt="visitor badge" src="https://visitor-badge.laobi.icu/badge?page_id=GnomGad.KworkBrowser&?style=plastic"  />
+<img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/GnomGad/KworkBrowser?style=plastic">
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/GnomGad/KworkBrowser?style=plastic">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/GnomGad/KworkBrowser?style=plastic">
 
 
-## Цель Kwork Browser
----------------------
-Цель состоит в быстром и удобном мониторинге задач на сайте kwork.ru
+-------------------------------
 
-## Возможности
-----------
+<h2 align ="center">Задача приложения</h2>
+
+1. Удобный мониторинг тасков
+    * Выводить интересующие темы с минимальной информацией о тасках
+    * Помечать таски цветами
+    * Показать подробную информацию о таске
+    * Показать подробную информацию о заказчике
+2. Анализ тасков
+    * Дополнить Задачи
 
 
-## Использование
---------
+
+[Ссылка на сайт](https://kwork.ru/)

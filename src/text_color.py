@@ -2,7 +2,7 @@
 Text output with color
 """
 
-from src.settings import DEBUG
+from src.settings import DEBUG, ESCAPE_OUT
 
 
 def print_debug_text(msg): #kek
@@ -16,13 +16,25 @@ def print_debug_text(msg): #kek
 def print_warning_text(msg):
     """
     """
-    print("\033[33m{0}\033[0m".format(msg))
+    if ESCAPE_OUT:
+        print("\033[33m{0}\033[0m".format(msg))
+    else:
+        print(msg)
 
 def print_good_text(msg):
-    print("\033[32m{0}\033[0m".format(msg))
+    if ESCAPE_OUT:
+        print("\033[32m{0}\033[0m".format(msg))
+    else:
+        print(msg)
 
 def print_normal_text(msg):
-    print("\033[33m{0}\033[0m".format(msg))
+    if ESCAPE_OUT:
+        print("\033[33m{0}\033[0m".format(msg))
+    else:
+        print(msg)
 
 def print_bad_text(msg):
-    print("\033[31m{0}\033[0m".format(msg))
+    if ESCAPE_OUT:    
+        print("\033[31m{0}\033[0m".format(msg))
+    else:
+        print(msg)
