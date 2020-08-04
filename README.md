@@ -9,7 +9,7 @@
 <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/GnomGad/KworkBrowser?style=plastic">
 <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/GnomGad/KworkBrowser?style=plastic">
 <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/GnomGad/KworkBrowser?style=plastic">
-<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/GnomGad/KworkBrowser?style=plastic">
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/GnomGad/KworkBrowser?style=plastic">
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/GnomGad/KworkBrowser">
 
 <img alt="GitHub" src="https://img.shields.io/github/license/GnomGad/KworkBrowser?style=plastic" >
