@@ -4,9 +4,9 @@ Processing user requests and issuing a response
 
 
 from src import settings
-from src import parser as p
+from src import parser as pa
 from src.text_color import print_warning_text
-from src import browser as br
+from src import browser
 
 def help():
     
@@ -29,6 +29,7 @@ def help():
     """)
 
 def update(argv):
+    p = pa.Parser()
     for i, v in enumerate(argv):
         if v == "-a":
             p.parse_main_topics()
@@ -39,6 +40,8 @@ def update(argv):
             p.parse_sub_topics()
 
 def show(argv):
+    p = pa.Parser()
+    br = browser.Browser()
     for i, v in enumerate(argv):
         if v == "-l":
             m = p.deserialization(settings.SAVE_NAMES["main_topics"])
