@@ -27,6 +27,15 @@
 2. Анализ тасков
     * Дополнить Задачи
 
+<h2 align ="center">Скрины</h2>
 
+<div  align ="center">
+    <h3 align ="center">Просмотр списка категорий</h3>
+    <img alt = "Все категории" src="src/icons/showl.jpg">
+    <h3 align ="center">Просмотр интересующей категории</h3>
+    <img alt = "Каиенрия игр" src="src/icons/show40.jpg">
+    <h3 align ="center">Подробный просмотр тасков</h3>
+    <img alt = "Просмотр интересующих данных" src="src/icons/get.jpg">
+</div>
 
 [Ссылка на сайт](https://kwork.ru/)

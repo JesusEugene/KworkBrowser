@@ -81,7 +81,42 @@ class Parser:
         }
 
     def parse_full_post(self,url):
-        pass
+        p = pq(url)
+        child = p("#foxPostForm > div > div.card.project-card > div")
+        topic = child("div.mb15 > div.d-flex.justify-content-between > div.wants-card__left > div.wants-card__header-title.first-letter.breakwords")[0].text
+
+        price =[child("div > span.fs12")[0].tail.replace(" ","")]#
+        tml = child("div.wants-card__description-higher-price > span.nowrap")
+        if len(tml) == 2:
+            price.append(tml[0].text[2:].replace(" ",""))
+        else:
+            price.append(price[0])
+    
+        tmp =  [i.text for i in child("div.project_card--informers_column > div ").children()]#[0].text.split("\xa0\xa0\xa0")#
+        info = [
+            tmp[0].split(":")[1].strip(),
+            tmp[1].split("\xa0")[1].strip()
+        ]
+            
+        tmp = child("div.mb10.want-payer-statistic.d-flex > div > div.dib.v-align-t >br")[0].tail.replace("\t","").replace("\n","").split(" ")
+        if len(tmp) == 1:
+            tmp.append("None")
+        stats = [
+            child("div.mb10.want-payer-statistic.d-flex > div > div:nth-child(1) > div > a")[0].text.strip(),
+            child("div.mb10.want-payer-statistic.d-flex > div > div.dib.v-align-t")[0].text.split(":")[1].replace("\t","").replace("\n","").strip(),
+            tmp[1],
+            
+        ]#
+
+        desc = [i.tail.replace("\r\n","") for i in child("div.wants-card__left > div.wants-card__description-text.wish_name.first-letter.br-with-lh.break-word > div").children()]
+
+        return {
+            "topic" : topic,
+            "price" : price,
+            "info" : info,
+            "stats" : stats,
+            "desc" : desc,
+        }
 
 
     def get_posts(self,page):
@@ -124,7 +159,6 @@ class Parser:
                 yield page
             else:
                 break
-
 
 
     def serialization(self,data,name):

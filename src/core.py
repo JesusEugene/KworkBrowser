@@ -2,6 +2,7 @@
 Processing user requests and issuing a response
 """
 
+from os import path
 
 from src import settings
 from src import parser as pa
@@ -11,6 +12,7 @@ from src import browser
 def help():
     
     print("""\nСписок комманд:
+
         help - Показывает список команд.\n
         update -a, -m, -s, Обновляетc топики
                         -a Обновляет все топики
@@ -20,12 +22,9 @@ def help():
                         -id - вывести посты определенного id
                             пример show -84
                         -l покажет пары id - название\n
-        get  -p id, -u id
+        get  -p id
                         -p id - введет всю информацию  посте из последнй таблицы
-                            пример get -p 2
-                        -u id - выведет информацию о пользователе поста из последнй таблицы
-                            пример get -u 5
-                        
+                            пример get -p 2         
     """)
 
 def update(argv):
@@ -56,8 +55,24 @@ def show(argv):
             
 
 def get(argv):
+    br = browser.Browser()
+    last = ""
+    with open(path.join(settings.DATA_DIR,settings.SAVE_NAMES["user"]),"r") as f:
+        last = f.readlines()[-1][:-1]
+
+    post = False
     for i, v in enumerate(argv):
-        pass
+        if v in ["-p"]:
+            post = True
+            user = False
+            continue
+        if post and v.isdigit():
+            br.show_post(last,v)
+        elif user and v.isdigit():
+            br.show_user(last,v)
+        else: 
+            break
+
 
 def get_option(argv):
     """
@@ -86,5 +101,5 @@ def execute_from_command_line(argv):
         elif value in ["show"]:
             show(get_option(argv[index+1:]))
         elif value in ["get"]:
-            get(get_option(argv[index+1:]))
+            get(argv[index+1:])
             

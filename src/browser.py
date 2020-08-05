@@ -7,8 +7,8 @@ from src.settings import DATA_DIR, SAVE_NAMES
 
 COUNT_CHARS = 9+3+70+8+8+11+20+5+5-2
 
-class Browser:
 
+class Browser:
     def show(self, id):
         parser = pa.Parser()
         self.print_bot_line()
@@ -34,7 +34,6 @@ class Browser:
         line = "│{5:3}│{0:70}│{1:8}│{2:8}│{3:11}│{4:20}│{6:5}│{7:5}│".format(topic["topic"][0], topic["price"][0],
                                                             topic["price"][1], topic["info"][1], topic["info"][0],
                                                             id, topic["stats"][1], topic["stats"][2] )
-
         test =topic["stats"][2][:-1]
         if test.isdigit() and int(test) < 25:
             print_bad_text(line)
@@ -43,21 +42,32 @@ class Browser:
         else:
             print_normal_text(line)
 
+
     def show_post(self, id,pos):
         parser = pa.Parser()
-        d = parser.deserialization(path.join(DATA_DIR,"{0}.json".format(str(id))))[pos][0]
-        line = ""
-        print(d)
+        url = parser.deserialization(path.join(DATA_DIR,"{0}.json".format(str(id))))[pos][0]
+        topic = parser.parse_full_post(url)
+        desc = ""
+        for i in topic["desc"]:
+            desc+="\n\t"+i
+        print("―"*COUNT_CHARS)
+        print_good_text("\nLink: {0}".format(url))
+        line = """\nTheme:\n\t{0}\nDescription:{1}\nPrices:\n\t{2} - {3}\nCustomer Info:\n\tName: {4}
+        Number of orders: {5}\n\tEfficiency: {6}\nInfo:\n\tTime left: {7}\n\tNumber of offers: {8}\n""".format(
+            topic["topic"],desc,topic["price"][0],topic["price"][1],topic["stats"][0],topic["stats"][1],topic["stats"][2],
+            topic["info"][0], topic["info"][1])
 
-    def show_user(self, id, pos):
-        parser = pa.Parser()
-        d = parser.deserialization(path.join(DATA_DIR,"{0}.json".format(str(id))))[pos][1]
+        
+        print_normal_text(line)
+
 
     def print_bot_line(self):
         print("┍{0}┑".format("―"*(COUNT_CHARS)))
 
+
     def print_top_line(self):
         print("└{0}┘".format("―"*(COUNT_CHARS)))
+
 
     def print_midle_line(self):
         print("├{0}┤".format("―"*(COUNT_CHARS)))
